@@ -2,6 +2,7 @@
 
 import {
   createColumnHelper,
+  flexRender,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
@@ -93,7 +94,7 @@ export function TradesTable({ state }: Props) {
               >
                 {row.getVisibleCells().map((cell) => (
                   <td key={cell.id} className="px-3 py-2 text-slate-200">
-                    {cell.renderCell()}
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}
               </tr>

@@ -1,4 +1,3 @@
-import crypto from "node:crypto";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
@@ -6,10 +5,6 @@ const PASSWORD_HASH =
   process.env.DASH_PASSWORD_HASH ??
   "adedfdfab703b34e7c4e513442ae763683dc97102dfc8820ebe586ebb07343ee";
 const AUTH_COOKIE = "dash_auth";
-
-function _hash(input: string) {
-  return crypto.createHash("sha256").update(input).digest("hex");
-}
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
