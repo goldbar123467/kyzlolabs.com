@@ -1,0 +1,55 @@
+{
+  "trades": [
+    {
+      "timestamp": "2025-12-10T14:35:00.000Z",
+      "symbol": "SOL/USDC",
+      "side": "long",
+      "entry_price": 98.5,
+      "exit_price": 101.9,
+      "shares": 120,
+      "pnl": 408,
+      "pnl_pct": 3.45,
+      "hold_time_minutes": 42,
+      "exit_reason": "target"
+    },
+    {
+      "timestamp": "2025-12-10T15:20:00.000Z",
+      "symbol": "ETH/USDC",
+      "side": "short",
+      "entry_price": 3570.0,
+      "exit_price": 3542.5,
+      "shares": 10,
+      "pnl": 275,
+      "pnl_pct": 0.77,
+      "hold_time_minutes": 28,
+      "exit_reason": "signal_flip"
+    },
+    {
+      "timestamp": "2025-12-10T16:05:00.000Z",
+      "symbol": "BTC/USDC",
+      "side": "long",
+      "entry_price": 98400.0,
+      "exit_price": 98150.0,
+      "shares": 0.2,
+      "pnl": -50,
+      "pnl_pct": -0.06,
+      "hold_time_minutes": 18,
+      "exit_reason": "risk_off"
+    }
+  ],
+  "daily_stats": [
+    {
+      "date": "2025-12-10",
+      "starting_equity": 100000,
+      "ending_equity": 101250,
+      "daily_pnl": 1250,
+      "daily_return_pct": 1.25,
+      "trades": 7,
+      "winners": 5,
+      "losers": 2,
+      "win_rate": 71.4,
+      "sharpe_intraday": 1.82,
+      "max_drawdown_pct": 0.65
+    }
+  ]
+}
