@@ -11,8 +11,8 @@ export type StateConfig = {
 
 export function getStateConfig(modeOverride?: StateMode): StateConfig {
   const mode = (modeOverride ??
-    (process.env.STATE_MODE as StateMode | undefined) ??
-    "local") as StateMode;
+    (process.env.NEXT_PUBLIC_STATE_MODE as StateMode | undefined) ??
+    "remote") as StateMode;
 
   const localStatePath =
     process.env.LOCAL_STATE_PATH ??
