@@ -2,9 +2,7 @@ import crypto from "node:crypto";
 
 import { NextResponse } from "next/server";
 
-const PASSWORD_HASH =
-  process.env.DASH_PASSWORD_HASH ??
-  "adedfdfab703b34e7c4e513442ae763683dc97102dfc8820ebe586ebb07343ee";
+const PASSWORD_HASH = process.env.DASH_PASSWORD_HASH;
 const AUTH_COOKIE = "dash_auth";
 
 function hash(input: string) {
@@ -13,6 +11,13 @@ function hash(input: string) {
 
 export async function POST(request: Request) {
   try {
+    if (!PASSWORD_HASH) {
+      return NextResponse.json(
+        { error: "Auth not configured" },
+        { status: 500 },
+      );
+    }
+
     const body = (await request.json()) as { password?: string };
     const candidate = body.password ?? "";
     const candidateHash = hash(candidate);

@@ -16,8 +16,7 @@ Data modes (via `STATE_MODE`):
 
 Auth
 - Password gate via middleware and `/login`.
-- Default hash (`DASH_PASSWORD_HASH`) is for password: `s3zdfjsksbcu27374848nsbedbdh`.
-- To change: set env `DASH_PASSWORD_HASH` to `sha256(your_password)`.
+- Set env `DASH_PASSWORD_HASH` to `sha256(your_password)`; no default is bundled.
 
 ## Netlify deploy
 - `netlify.toml` already set: build `npm run build`, publish `.next`, functions in `netlify/functions`.
@@ -25,7 +24,7 @@ Auth
   - `STATE_MODE=remote`
   - `REPO_RAW_URL` (e.g., `https://raw.githubusercontent.com/<org>/<repo>/main/reports/state.json`)
   - `GITHUB_TOKEN` (if private repo; not needed for public)
-  - `DASH_PASSWORD_HASH` (sha256 of your password; default baked for the provided password)
+  - `DASH_PASSWORD_HASH` (sha256 of your password)
   - Optional overrides: `STATE_REMOTE_URL`, `LOCAL_STATE_PATH`, `STATE_FIXTURE_PATH`
 - Local dev with `netlify dev` will default to `STATE_MODE=local`.
 

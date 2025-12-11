@@ -1,9 +1,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-const PASSWORD_HASH =
-  process.env.DASH_PASSWORD_HASH ??
-  "adedfdfab703b34e7c4e513442ae763683dc97102dfc8820ebe586ebb07343ee";
+const PASSWORD_HASH = process.env.DASH_PASSWORD_HASH;
 const AUTH_COOKIE = "dash_auth";
 
 export function middleware(req: NextRequest) {
@@ -17,6 +15,10 @@ export function middleware(req: NextRequest) {
 
   if (isPublic) {
     return NextResponse.next();
+  }
+
+  if (!PASSWORD_HASH) {
+    return new NextResponse("Auth not configured", { status: 500 });
   }
 
   const cookie = req.cookies.get(AUTH_COOKIE)?.value;
