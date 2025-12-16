@@ -27,32 +27,32 @@ export function SummaryCards({ state }: Props) {
     {
       label: "Current Equity",
       value: latest ? formatCurrency(latest.ending_equity) : "—",
-      accent: "from-[#5bffec] to-[#4da8ff]",
+      accent: "#00f0ff",
     },
     {
       label: "Daily P&L",
       value: latest ? formatCurrency(latest.daily_pnl) : "—",
-      accent: "from-[#8a5bff] to-[#ff7ee2]",
+      accent: "#a855f7",
     },
     {
       label: "Win Rate",
       value: latest ? formatPercent(latest.win_rate) : "—",
-      accent: "from-[#4da8ff] to-[#8a5bff]",
+      accent: "#00ff88",
     },
     {
       label: "Max Drawdown",
       value: latest ? formatPercent(latest.max_drawdown_pct) : "—",
-      accent: "from-[#ff7ee2] to-[#ff9b4a]",
+      accent: "#ff006e",
     },
     {
       label: "Trades (total)",
       value: state.trades.length.toString(),
-      accent: "from-[#5bffec] to-[#8a5bff]",
+      accent: "#ff9500",
     },
     {
       label: "Last Updated",
       value: latest ? latest.date : "—",
-      accent: "from-[#4da8ff] to-[#5bffec]",
+      accent: "#00f0ff",
     },
   ];
 
@@ -61,15 +61,13 @@ export function SummaryCards({ state }: Props) {
       {cards.map((card) => (
         <div
           key={card.label}
-          className="glass glow relative overflow-hidden rounded-2xl p-4"
+          className="surface-card"
+          style={{ ["--accent" as string]: card.accent }}
         >
-          <div
-            className={`absolute inset-x-0 top-0 h-px bg-gradient-to-r ${card.accent} opacity-70`}
-          />
-          <p className="text-xs uppercase tracking-[0.16em] text-slate-300">
+          <p className="text-xs uppercase tracking-[0.16em] text-ghost-40">
             {card.label}
           </p>
-          <p className="mt-2 text-2xl font-semibold text-white drop-shadow-sm">
+          <p className="mt-3 text-2xl font-semibold text-ghost-100">
             {card.value}
           </p>
         </div>

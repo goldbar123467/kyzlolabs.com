@@ -29,9 +29,7 @@ type Props = { state: ReporterState };
 export function EquityChart({ state }: Props) {
   if (!state.daily_stats.length) {
     return (
-      <div className="glass rounded-2xl p-4 text-slate-300">
-        No equity data yet.
-      </div>
+      <div className="surface-panel text-ghost-60">No equity data yet.</div>
     );
   }
 
@@ -52,8 +50,8 @@ export function EquityChart({ state }: Props) {
       {
         label: "Equity",
         data: equity,
-        borderColor: "#5bffec",
-        backgroundColor: "rgba(91, 255, 236, 0.12)",
+        borderColor: "#00f0ff",
+        backgroundColor: "rgba(0, 240, 255, 0.12)",
         fill: true,
         tension: 0.25,
         pointRadius: 0,
@@ -62,13 +60,15 @@ export function EquityChart({ state }: Props) {
         label: "Drawdown (%)",
         data: drawdown,
         yAxisID: "y1",
-        borderColor: "#ff7ee2",
-        backgroundColor: "rgba(255, 126, 226, 0.12)",
+        borderColor: "#a855f7",
+        backgroundColor: "rgba(168, 85, 247, 0.12)",
         tension: 0.25,
         pointRadius: 0,
       },
     ],
   };
+
+  const axisColor = "rgba(255,255,255,0.6)";
 
   const options = {
     responsive: true,
@@ -76,31 +76,32 @@ export function EquityChart({ state }: Props) {
     plugins: {
       legend: {
         labels: {
-          color: "#e6ecff",
+          color: axisColor,
           boxWidth: 10,
+          usePointStyle: true,
         },
       },
       tooltip: {
-        backgroundColor: "rgba(15, 23, 42, 0.9)",
-        borderColor: "rgba(255,255,255,0.1)",
+        backgroundColor: "rgba(26,26,36,0.92)",
+        borderColor: "rgba(255,255,255,0.08)",
         borderWidth: 1,
-        titleColor: "#e6ecff",
-        bodyColor: "#e6ecff",
+        titleColor: "#ffffff",
+        bodyColor: "#e6e6e6",
       },
     },
     scales: {
       x: {
-        ticks: { color: "#9fb3ff" },
-        grid: { color: "rgba(255,255,255,0.06)" },
+        ticks: { color: axisColor },
+        grid: { color: "rgba(255,255,255,0.04)" },
       },
       y: {
-        ticks: { color: "#9fb3ff" },
-        grid: { color: "rgba(255,255,255,0.06)" },
+        ticks: { color: axisColor },
+        grid: { color: "rgba(255,255,255,0.04)" },
       },
       y1: {
         position: "right" as const,
         ticks: {
-          color: "#ffb3f0",
+          color: "#a855f7",
           callback: (value: number | string) => `${value}%`,
         },
         grid: { display: false },
@@ -109,13 +110,13 @@ export function EquityChart({ state }: Props) {
   };
 
   return (
-    <div className="glass rounded-2xl p-4">
-      <div className="mb-2 flex items-center justify-between">
+    <div className="surface-panel">
+      <div className="mb-3 flex items-center justify-between">
         <div>
-          <p className="text-xs uppercase tracking-[0.14em] text-slate-300">
+          <p className="text-xs uppercase tracking-[0.14em] text-ghost-40">
             Performance
           </p>
-          <h2 className="text-lg font-semibold text-white">
+          <h2 className="text-lg font-semibold text-ghost-100">
             Equity & Drawdown
           </h2>
         </div>

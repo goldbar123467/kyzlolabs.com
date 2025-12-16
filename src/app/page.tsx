@@ -10,43 +10,35 @@ export default async function Home() {
   const state = await loadState();
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-transparent text-slate-100">
-      <div className="starfield" style={{ opacity: "var(--cosmos-enabled)" }} />
-      <div
-        className="parallax-gradient"
-        style={{ opacity: "calc(0.9 * var(--cosmos-enabled))" }}
-      />
-      <div
-        className="planet p1"
-        style={{ opacity: "calc(0.5 * var(--cosmos-enabled))" }}
-      />
-      <div
-        className="planet p2"
-        style={{ opacity: "calc(0.5 * var(--cosmos-enabled))" }}
-      />
-      <div
-        className="rocket"
-        style={{ opacity: "calc(0.8 * var(--cosmos-enabled))" }}
-      />
+    <main className="relative min-h-screen overflow-hidden bg-void text-ghost-80">
+      <div className="void-gradient" />
+      <div className="void-mesh" />
+      <div className="void-grid" />
+      <div className="void-noise" />
 
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12">
-        <header className="flex flex-col gap-2">
-          <p className="text-xs uppercase tracking-[0.24em] text-slate-300">
-            OTQ Live Cosmos
-          </p>
-          <h1 className="text-4xl font-semibold text-white drop-shadow-lg">
-            Mission Control Dashboard
-          </h1>
-          <p className="text-slate-300">
-            Space-themed glassmorphism view of your bots: equity, drawdowns, and
-            latest trades.
-          </p>
-          <BackdropToggle />
+      <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-10 px-6 py-12 lg:px-10">
+        <header className="flex flex-col gap-4">
+          <p className="overline">Void Protocol · Mission Control</p>
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div className="space-y-3">
+              <h1 className="void-hero">KYZLO Bot Dashboard</h1>
+              <p className="void-body max-w-3xl">
+                Live telemetry for equity, drawdowns, and trade flow rendered
+                through the VOID aesthetic. The darkness is potential—every
+                signal emerges from it.
+              </p>
+            </div>
+            <div className="self-start md:self-auto">
+              <BackdropToggle />
+            </div>
+          </div>
         </header>
 
-        <SummaryCards state={state} />
-        <EquityChart state={state} />
-        <TradesTable state={state} />
+        <div className="flex flex-col gap-8">
+          <SummaryCards state={state} />
+          <EquityChart state={state} />
+          <TradesTable state={state} />
+        </div>
       </div>
     </main>
   );
