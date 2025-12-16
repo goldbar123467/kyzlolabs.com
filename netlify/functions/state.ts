@@ -52,8 +52,11 @@ async function loadRemote() {
 
 export const handler: Handler = async () => {
   const mode =
-    (process.env.NEXT_PUBLIC_STATE_MODE as "local" | "mock" | "remote" | undefined) ??
-    (process.env.NETLIFY_DEV === "true" ? "local" : "remote");
+    (process.env.NEXT_PUBLIC_STATE_MODE as
+      | "local"
+      | "mock"
+      | "remote"
+      | undefined) ?? (process.env.NETLIFY_DEV === "true" ? "local" : "remote");
 
   try {
     if (mode === "mock") {

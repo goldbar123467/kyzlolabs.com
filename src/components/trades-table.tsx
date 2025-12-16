@@ -62,22 +62,22 @@ export function TradesTable({ state }: Props) {
   });
 
   return (
-    <div className="glass rounded-2xl p-4">
+    <div className="surface-panel">
       <div className="mb-3 flex items-center justify-between">
         <div>
-          <p className="text-xs uppercase tracking-[0.14em] text-slate-300">
+          <p className="text-xs uppercase tracking-[0.14em] text-ghost-40">
             Recent Trades
           </p>
-          <h2 className="text-lg font-semibold text-white">Last 20</h2>
+          <h2 className="text-lg font-semibold text-ghost-100">Last 20</h2>
         </div>
       </div>
       <div className="overflow-x-auto">
-        <table className="w-full text-left text-sm text-slate-100">
-          <thead className="text-xs uppercase text-slate-300">
+        <table className="table-void text-sm">
+          <thead>
             {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id} className="border-b border-white/5">
+              <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <th key={header.id} className="px-3 py-2 font-medium">
+                  <th key={header.id} className="font-medium text-ghost-60">
                     {header.isPlaceholder
                       ? null
                       : header.column.columnDef.header?.toString()}
@@ -88,12 +88,9 @@ export function TradesTable({ state }: Props) {
           </thead>
           <tbody>
             {table.getRowModel().rows.map((row) => (
-              <tr
-                key={row.id}
-                className="border-b border-white/5/10 last:border-none hover:bg-white/5"
-              >
+              <tr key={row.id}>
                 {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id} className="px-3 py-2 text-slate-200">
+                  <td key={cell.id} className="text-ghost-80">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}
@@ -103,7 +100,7 @@ export function TradesTable({ state }: Props) {
               <tr>
                 <td
                   colSpan={columns.length}
-                  className="px-3 py-4 text-slate-400"
+                  className="px-3 py-4 text-ghost-60"
                 >
                   No trades yet.
                 </td>
